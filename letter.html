@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+      content="width=device-width, initial-scale=1.0">
 
 <title>Your Rakhi Letter ❤️</title>
 
@@ -41,7 +41,7 @@ body {
 
     justify-content: center;
 
-    align-items: center;
+    align-items: flex-start;
 
     padding: 25px 15px;
 
@@ -58,6 +58,7 @@ body {
     font-family: Georgia, serif;
 
     overflow-x: hidden;
+    overflow-y: auto;
 
 }
 
@@ -72,11 +73,11 @@ body::before {
 
     position: fixed;
 
-    width: 280px;
+    width: 300px;
 
-    height: 280px;
+    height: 300px;
 
-    top: -130px;
+    top: -140px;
 
     left: 50%;
 
@@ -104,6 +105,8 @@ body::before {
 
     width: min(650px, 100%);
 
+    margin: 15px auto 30px;
+
     padding: 45px 40px;
 
     border-radius: 30px;
@@ -119,15 +122,12 @@ body::before {
         1px solid rgba(255, 215, 140, 0.55);
 
     box-shadow:
-
         0 30px 90px rgba(0, 0, 0, 0.7),
-
         0 0 50px rgba(255, 190, 90, 0.10);
 
     text-align: center;
 
-    animation:
-        appear 0.8s ease;
+    animation: appear 0.8s ease;
 
 }
 
@@ -163,11 +163,7 @@ h1 {
 
     color: #ffd98f;
 
-    font-size: clamp(
-        30px,
-        6vw,
-        40px
-    );
+    font-size: clamp(30px, 6vw, 40px);
 
     font-weight: normal;
 
@@ -263,7 +259,79 @@ h1 {
 
 
 /* =====================================================
-   BUTTON
+   SURPRISE / QR SECTION
+===================================================== */
+
+.surprise-section {
+
+    margin-top: 32px;
+
+    padding-top: 28px;
+
+    border-top:
+        1px solid
+        rgba(255, 210, 130, 0.15);
+
+    text-align: center;
+
+}
+
+
+.surprise-section h2 {
+
+    margin: 0 0 10px;
+
+    color: #ffd98f;
+
+    font-size: 23px;
+
+    font-weight: normal;
+
+}
+
+
+.surprise-section p {
+
+    margin: 0 0 20px;
+
+    color: #d9bcc3;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+
+.qr-image {
+
+    display: block;
+
+    width: 210px;
+
+    height: 210px;
+
+    object-fit: contain;
+
+    margin: 20px auto;
+
+    padding: 8px;
+
+    background: white;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 12px 35px
+        rgba(0, 0, 0, 0.4);
+
+}
+
+
+/* =====================================================
+   EXPERIENCE AGAIN BUTTON
 ===================================================== */
 
 .again-button {
@@ -366,15 +434,13 @@ h1 {
 
         align-items: flex-start;
 
-        padding:
-            35px 15px;
+        padding: 20px 15px;
 
     }
 
     .letter-card {
 
-        padding:
-            38px 28px;
+        padding: 38px 28px;
 
     }
 
@@ -382,7 +448,7 @@ h1 {
 
 
 /* =====================================================
-   PHONE
+   MOBILE
 ===================================================== */
 
 @media (max-width: 500px) {
@@ -391,10 +457,9 @@ h1 {
 
         min-height: 100svh;
 
-        padding:
-            20px 12px;
+        padding: 12px 10px;
 
-        align-items: center;
+        align-items: flex-start;
 
     }
 
@@ -403,14 +468,11 @@ h1 {
 
         width: 100%;
 
-        padding:
-            30px 21px 25px;
+        margin: 8px auto 25px;
+
+        padding: 30px 20px 28px;
 
         border-radius: 25px;
-
-        box-shadow:
-            0 20px 60px
-            rgba(0, 0, 0, 0.65);
 
     }
 
@@ -437,8 +499,7 @@ h1 {
 
     .rakhi {
 
-        margin:
-            16px 0;
+        margin: 16px 0;
 
         font-size: 42px;
 
@@ -449,8 +510,7 @@ h1 {
 
         width: 55px;
 
-        margin:
-            18px auto 25px;
+        margin: 18px auto 25px;
 
     }
 
@@ -460,8 +520,6 @@ h1 {
         font-size: 16px;
 
         line-height: 1.85;
-
-        color: #f1dce0;
 
     }
 
@@ -473,6 +531,42 @@ h1 {
         padding-top: 18px;
 
         font-size: 17px;
+
+    }
+
+
+    .surprise-section {
+
+        margin-top: 28px;
+
+        padding-top: 23px;
+
+    }
+
+
+    .surprise-section h2 {
+
+        font-size: 21px;
+
+    }
+
+
+    .surprise-section p {
+
+        font-size: 13px;
+
+        line-height: 1.6;
+
+    }
+
+
+    .qr-image {
+
+        width: 190px;
+
+        height: 190px;
+
+        margin: 18px auto;
 
     }
 
@@ -501,15 +595,17 @@ h1 {
     body {
 
         padding:
-            12px 9px;
+            8px 8px;
 
     }
 
 
     .letter-card {
 
+        margin-top: 5px;
+
         padding:
-            25px 17px 20px;
+            25px 17px 22px;
 
         border-radius: 22px;
 
@@ -536,8 +632,7 @@ h1 {
 
         font-size: 38px;
 
-        margin:
-            13px 0;
+        margin: 13px 0;
 
     }
 
@@ -554,6 +649,22 @@ h1 {
     .signature {
 
         font-size: 16px;
+
+    }
+
+
+    .surprise-section h2 {
+
+        font-size: 19px;
+
+    }
+
+
+    .qr-image {
+
+        width: 175px;
+
+        height: 175px;
 
     }
 
@@ -585,28 +696,48 @@ h1 {
 <div class="letter-card">
 
 
+    <!-- =================================================
+         HEADER
+    ================================================= -->
+
     <div class="label">
+
         THIS ONE IS JUST FOR YOU ✦
+
     </div>
 
 
     <h1 id="brotherTitle">
+
         Happy Rakhi ❤️
+
     </h1>
 
 
     <div class="rakhi">
+
         🎀
+
     </div>
 
 
     <div class="line"></div>
 
 
+    <!-- =================================================
+         LETTER
+    ================================================= -->
+
     <div id="letter">
+
         Loading your letter...
+
     </div>
 
+
+    <!-- =================================================
+         SIGNATURE
+    ================================================= -->
 
     <div class="signature">
 
@@ -616,6 +747,41 @@ h1 {
 
     </div>
 
+
+    <!-- =================================================
+         QR SURPRISE
+    ================================================= -->
+
+    <div class="surprise-section">
+
+        <h2>
+
+            🎁 One Little Surprise
+
+        </h2>
+
+
+        <p>
+
+            Since you got your Rakhi...<br>
+
+            here's a little surprise for me too hehe ❤️
+
+        </p>
+
+
+        <img
+            class="qr-image"
+            src="qr-placeholder.jpeg"
+            alt="QR Code"
+        >
+
+    </div>
+
+
+    <!-- =================================================
+         EXPERIENCE AGAIN
+    ================================================= -->
 
     <a
         class="again-button"
@@ -762,7 +928,7 @@ const letter =
 
 
 /* =====================================================
-   DISPLAY LETTER
+   DISPLAY PERSONALIZED LETTER
 ===================================================== */
 
 if (
@@ -791,7 +957,7 @@ if (
 
 
 /* =====================================================
-   ERROR
+   NO BROTHER FOUND
 ===================================================== */
 
 else {
@@ -802,11 +968,6 @@ else {
 
     letter.textContent =
         "We couldn't find your Rakhi selection. Please go back and choose your name again.";
-
-
-    console.log(
-        "No valid brother selection found."
-    );
 
 }
 
