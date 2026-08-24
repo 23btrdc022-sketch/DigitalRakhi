@@ -3,253 +3,578 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Your Rakhi Letter ❤️</title>
+<title>Your Rakhi Letter ❤️</title>
 
+<style>
 
-    <style>
+/* =====================================================
+   RESET
+===================================================== */
 
-        * {
-            box-sizing: border-box;
-        }
+* {
+    box-sizing: border-box;
+}
 
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
 
-        body {
 
-            margin: 0;
+/* =====================================================
+   BODY
+===================================================== */
 
-            min-height: 100vh;
+body {
 
-            display: flex;
+    min-height: 100vh;
 
-            justify-content: center;
+    display: flex;
 
-            align-items: center;
+    justify-content: center;
 
-            padding: 25px;
+    align-items: center;
 
-            background:
-                radial-gradient(
-                    circle at top,
-                    #64152f,
-                    #100207 70%
-                );
+    padding: 25px 15px;
 
-            font-family: Georgia, serif;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            #751d3c 0%,
+            #3b0d20 35%,
+            #100207 85%
+        );
 
-            color: #ffe9c0;
+    color: #ffe9c0;
 
-        }
+    font-family: Georgia, serif;
 
+    overflow-x: hidden;
 
-        .letter-card {
+}
 
-            width: min(650px, 95%);
 
-            padding: 45px 35px;
+/* =====================================================
+   DECORATIVE GLOW
+===================================================== */
 
-            border-radius: 30px;
+body::before {
 
-            background:
-                rgba(35, 6, 18, 0.96);
+    content: "";
 
-            border:
-                1px solid rgba(255, 215, 140, 0.65);
+    position: fixed;
 
-            box-shadow:
+    width: 280px;
 
-                0 25px 80px rgba(0, 0, 0, 0.7),
+    height: 280px;
 
-                0 0 50px rgba(255, 190, 90, 0.12);
+    top: -130px;
 
-            text-align: center;
+    left: 50%;
 
-            animation:
-                appear 0.9s ease;
+    transform: translateX(-50%);
 
-        }
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 210, 130, 0.16),
+            transparent 70%
+        );
 
+    pointer-events: none;
 
-        .label {
+}
 
-            font-family: Arial, sans-serif;
 
-            font-size: 12px;
+/* =====================================================
+   LETTER CARD
+===================================================== */
 
-            letter-spacing: 3px;
+.letter-card {
 
-            color: #d9a94f;
+    position: relative;
 
-            margin-bottom: 15px;
+    width: min(650px, 100%);
 
-        }
+    padding: 45px 40px;
 
+    border-radius: 30px;
 
-        h1 {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(62, 11, 31, 0.97),
+            rgba(25, 4, 14, 0.98)
+        );
 
-            margin: 5px 0;
+    border:
+        1px solid rgba(255, 215, 140, 0.55);
 
-            color: #ffd98f;
+    box-shadow:
 
-            font-size: 38px;
+        0 30px 90px rgba(0, 0, 0, 0.7),
 
-            font-weight: normal;
+        0 0 50px rgba(255, 190, 90, 0.10);
 
-        }
+    text-align: center;
 
+    animation:
+        appear 0.8s ease;
 
-        .rakhi {
+}
 
-            margin: 20px 0;
 
-            font-size: 45px;
+/* =====================================================
+   TOP LABEL
+===================================================== */
 
-        }
+.label {
 
+    margin-bottom: 14px;
 
-        .line {
+    color: #d9a94f;
 
-            width: 80px;
+    font-family: Arial, sans-serif;
 
-            height: 2px;
+    font-size: 11px;
 
-            margin: 25px auto;
+    font-weight: 600;
 
-            background: #e8bd65;
+    letter-spacing: 4px;
 
-        }
+}
 
 
-        #letter {
+/* =====================================================
+   TITLE
+===================================================== */
 
-            white-space: pre-line;
+h1 {
 
-            text-align: left;
+    margin: 0;
 
-            font-size: 18px;
+    color: #ffd98f;
 
-            line-height: 2;
+    font-size: clamp(
+        30px,
+        6vw,
+        40px
+    );
 
-            color: #f0d8dc;
+    font-weight: normal;
 
-        }
+    line-height: 1.25;
 
+}
 
-        .signature {
 
-            margin-top: 35px;
+/* =====================================================
+   RAKHI
+===================================================== */
 
-            text-align: right;
+.rakhi {
 
-            color: #ffd98f;
+    margin: 20px 0 18px;
 
-            font-size: 20px;
+    font-size: 48px;
 
-            line-height: 1.7;
+    filter:
+        drop-shadow(
+            0 5px 10px
+            rgba(255, 150, 100, 0.25)
+        );
 
-        }
+}
 
 
-        .again-button {
+/* =====================================================
+   GOLD LINE
+===================================================== */
 
-            display: inline-block;
+.line {
 
-            margin-top: 30px;
+    width: 70px;
 
-            padding: 14px 25px;
+    height: 2px;
 
-            border:
-                1px solid #e8bd65;
+    margin: 22px auto 30px;
 
-            border-radius: 50px;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #e8bd65,
+            transparent
+        );
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #851d3a,
-                    #481020
-                );
+}
 
-            color: #ffe4a1;
 
-            text-decoration: none;
+/* =====================================================
+   LETTER
+===================================================== */
 
-            font-family: Arial, sans-serif;
+#letter {
 
-            font-weight: bold;
+    text-align: left;
 
-            cursor: pointer;
+    white-space: pre-line;
 
-            transition:
-                transform 0.2s ease;
+    color: #f0d8dc;
 
-        }
+    font-size: 18px;
 
+    line-height: 1.9;
 
-        .again-button:hover {
+}
 
-            transform:
-                scale(1.05);
 
-        }
+/* =====================================================
+   SIGNATURE
+===================================================== */
 
+.signature {
 
-        @keyframes appear {
+    margin-top: 35px;
 
-            from {
+    padding-top: 20px;
 
-                opacity: 0;
+    border-top:
+        1px solid
+        rgba(255, 215, 140, 0.12);
 
-                transform:
-                    translateY(30px)
-                    scale(0.96);
+    text-align: right;
 
-            }
+    color: #ffd98f;
 
-            to {
+    font-size: 19px;
 
-                opacity: 1;
+    line-height: 1.7;
 
-                transform:
-                    translateY(0)
-                    scale(1);
+}
 
-            }
 
-        }
+/* =====================================================
+   BUTTON
+===================================================== */
 
+.again-button {
 
-        @media (max-width: 500px) {
+    display: inline-flex;
 
-            .letter-card {
+    align-items: center;
 
-                padding:
-                    35px 22px;
+    justify-content: center;
 
-            }
+    width: 100%;
 
+    max-width: 280px;
 
-            h1 {
+    min-height: 52px;
 
-                font-size: 30px;
+    margin-top: 30px;
 
-            }
+    padding: 14px 22px;
 
+    border:
+        1px solid
+        rgba(232, 189, 101, 0.8);
 
-            #letter {
+    border-radius: 50px;
 
-                font-size: 16px;
+    background:
+        linear-gradient(
+            135deg,
+            #8b1f3e,
+            #4b1022
+        );
 
-                line-height: 1.8;
+    color: #ffe4a1;
 
-            }
+    text-decoration: none;
 
-        }
+    font-family: Arial, sans-serif;
 
-    </style>
+    font-size: 14px;
+
+    font-weight: bold;
+
+    letter-spacing: 0.5px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.3);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.again-button:active {
+
+    transform: scale(0.97);
+
+}
+
+
+/* =====================================================
+   ANIMATION
+===================================================== */
+
+@keyframes appear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(0.97);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 700px) {
+
+    body {
+
+        align-items: flex-start;
+
+        padding:
+            35px 15px;
+
+    }
+
+    .letter-card {
+
+        padding:
+            38px 28px;
+
+    }
+
+}
+
+
+/* =====================================================
+   PHONE
+===================================================== */
+
+@media (max-width: 500px) {
+
+    body {
+
+        min-height: 100svh;
+
+        padding:
+            20px 12px;
+
+        align-items: center;
+
+    }
+
+
+    .letter-card {
+
+        width: 100%;
+
+        padding:
+            30px 21px 25px;
+
+        border-radius: 25px;
+
+        box-shadow:
+            0 20px 60px
+            rgba(0, 0, 0, 0.65);
+
+    }
+
+
+    .label {
+
+        font-size: 9px;
+
+        letter-spacing: 3px;
+
+        margin-bottom: 12px;
+
+    }
+
+
+    h1 {
+
+        font-size: 29px;
+
+        line-height: 1.3;
+
+    }
+
+
+    .rakhi {
+
+        margin:
+            16px 0;
+
+        font-size: 42px;
+
+    }
+
+
+    .line {
+
+        width: 55px;
+
+        margin:
+            18px auto 25px;
+
+    }
+
+
+    #letter {
+
+        font-size: 16px;
+
+        line-height: 1.85;
+
+        color: #f1dce0;
+
+    }
+
+
+    .signature {
+
+        margin-top: 28px;
+
+        padding-top: 18px;
+
+        font-size: 17px;
+
+    }
+
+
+    .again-button {
+
+        max-width: none;
+
+        margin-top: 25px;
+
+        min-height: 50px;
+
+        font-size: 13px;
+
+    }
+
+}
+
+
+/* =====================================================
+   SMALL PHONES
+===================================================== */
+
+@media (max-width: 380px) {
+
+    body {
+
+        padding:
+            12px 9px;
+
+    }
+
+
+    .letter-card {
+
+        padding:
+            25px 17px 20px;
+
+        border-radius: 22px;
+
+    }
+
+
+    .label {
+
+        font-size: 8px;
+
+        letter-spacing: 2.5px;
+
+    }
+
+
+    h1 {
+
+        font-size: 26px;
+
+    }
+
+
+    .rakhi {
+
+        font-size: 38px;
+
+        margin:
+            13px 0;
+
+    }
+
+
+    #letter {
+
+        font-size: 15px;
+
+        line-height: 1.75;
+
+    }
+
+
+    .signature {
+
+        font-size: 16px;
+
+    }
+
+}
+
+
+/* =====================================================
+   TOUCH DEVICES
+===================================================== */
+
+@media (hover: none) {
+
+    .again-button:hover {
+
+        transform: none;
+
+    }
+
+}
+
+</style>
 
 </head>
 
@@ -257,123 +582,123 @@
 <body>
 
 
-    <div class="letter-card">
+<div class="letter-card">
 
 
-        <div class="label">
-            THIS ONE IS JUST FOR YOU ✦
-        </div>
+    <div class="label">
+        THIS ONE IS JUST FOR YOU ✦
+    </div>
 
 
-        <h1 id="brotherTitle">
-            Happy Rakhi ❤️
-        </h1>
+    <h1 id="brotherTitle">
+        Happy Rakhi ❤️
+    </h1>
 
 
-        <div class="rakhi">
-            🎀
-        </div>
+    <div class="rakhi">
+        🎀
+    </div>
 
 
-        <div class="line"></div>
+    <div class="line"></div>
 
 
-        <div id="letter">
-            Loading your letter...
-        </div>
+    <div id="letter">
+        Loading your letter...
+    </div>
 
 
-        <div class="signature">
+    <div class="signature">
 
-            With lots of love,<br>
+        With lots of love,<br>
 
-            Your Sister ❤️
-
-        </div>
-
-
-        <a
-            class="again-button"
-            href="index.html"
-        >
-
-            🎀 EXPERIENCE AGAIN
-
-        </a>
-
+        Your Sister ❤️
 
     </div>
 
 
-    <script>
+    <a
+        class="again-button"
+        href="index.html"
+    >
+
+        🎀 EXPERIENCE AGAIN
+
+    </a>
 
 
-        // =============================================
-        // BROTHER DATA
-        // =============================================
-
-        const brothers = {
+</div>
 
 
-            "Aadi": {
+<script>
 
-                title:
-                    "Happy Rakhi, Aadi! ❤️",
 
-                letter:
-                    `We fight like crazy, but I know you love me the most, and I love you just as much.
+/* =====================================================
+   BROTHER DATA
+===================================================== */
+
+const brothers = {
+
+
+    "Aadi": {
+
+        title:
+            "Happy Rakhi, Aadi! ❤️",
+
+        letter:
+            `We fight like crazy, but I know you love me the most, and I love you just as much.
 
 No matter how much we fight, you’ll always be my favourite headache. 😂`
 
-            },
+    },
 
 
-            "Aryan": {
+    "Aryan": {
 
-                title:
-                    "Happy Rakhi, Golu! ❤️",
+        title:
+            "Happy Rakhi, Golu! ❤️",
 
-                letter:
-                    `You’re always feeding me everything you love, and somehow that’s your way of showing love.
+        letter:
+            `You’re always feeding me everything you love, and somehow that’s your way of showing love.
 
 Stay sweet and caring always. Love you! 🫶`
 
-            },
+    },
 
 
-            "Ashish": {
+    "Ashish": {
 
-                title:
-                    "Happy Rakhi, Ashish! ❤️",
+        title:
+            "Happy Rakhi, Ashish! ❤️",
 
-                letter:
-                    `We don’t talk much, but I’ve always found you mature and sensible.
+        letter:
+            `We don’t talk much, but I’ve always found you mature and sensible.
 
 I’m glad to have you as my brother. Stay the same!`
 
-            },
+    },
 
 
-            "Manish Bhaiya": {
+    "Manish Bhaiya": {
 
-                title:
-                    "Happy Rakhi, Bhaiya! ❤️",
+        title:
+            "Happy Rakhi, Bhaiya! ❤️",
 
-                letter:
-                    `You’re the eldest and the one who cares for everyone.
+        letter:
+            `You’re the eldest and the one who cares for everyone.
 
 Thank you for always looking after us. We’re lucky to have you. ❤️`
 
-            },
+    },
 
 
-            "Sandip Bhaiya": {
+    "Sandip Bhaiya": {
 
-                title:
-                    "Happy Rakhi, Bhaiya! ❤️",
+        title:
+            "Happy Rakhi, Bhaiya! ❤️",
 
-                letter:
-                    `Happy Rakhi to our funniest and shyest brother! 😂❤️
+        letter:
+            `Happy Rakhi to our funniest and shyest brother! 😂❤️
 
 And of course, our amazing cook!
 
@@ -381,112 +706,111 @@ You may be quiet, but you always make things better.
 
 Love you, Bhaiya!`
 
-            },
+    },
 
 
-            "Prince Bhaiya": {
+    "Prince Bhaiya": {
 
-                title:
-                    "Happy Rakhi, Bhaiya! ❤️",
+        title:
+            "Happy Rakhi, Bhaiya! ❤️",
 
-                letter:
-                    `We may not talk much, but you’re still deeply loved and an important part of our family.
+        letter:
+            `We may not talk much, but you’re still deeply loved and an important part of our family.
 
 Stay happy always!`
 
-            },
+    },
 
 
-            "Mandip Bhaiya": {
+    "Mandip Bhaiya": {
 
-                title:
-                    "Happy Rakhi to the craziest and most annoying one! 😂❤️",
+        title:
+            "Happy Rakhi to the craziest and most annoying one! 😂❤️",
 
-                letter:
-                    `You’re always drunk and up to something, but somehow we share a really special bond.
+        letter:
+            `You’re always drunk and up to something, but somehow we share a really special bond.
 
 Life would be boring without you!
 
 Love you, Bhaiya.`
 
-            }
+    }
+
+};
 
 
-        };
+/* =====================================================
+   GET SELECTED BROTHER
+===================================================== */
+
+const selectedBrother =
+    localStorage.getItem(
+        "selectedBrother"
+    );
 
 
-        // =============================================
-        // GET SELECTED BROTHER
-        // =============================================
-
-        const selectedBrother =
-            localStorage.getItem(
-                "selectedBrother"
-            );
+const brotherTitle =
+    document.getElementById(
+        "brotherTitle"
+    );
 
 
-        const brotherTitle =
-            document.getElementById(
-                "brotherTitle"
-            );
+const letter =
+    document.getElementById(
+        "letter"
+    );
 
 
-        const letter =
-            document.getElementById(
-                "letter"
-            );
+/* =====================================================
+   DISPLAY LETTER
+===================================================== */
+
+if (
+    selectedBrother &&
+    brothers[selectedBrother]
+) {
+
+    const brother =
+        brothers[selectedBrother];
 
 
-        // =============================================
-        // DISPLAY PERSONALIZED LETTER
-        // =============================================
-
-        if (
-            selectedBrother &&
-            brothers[selectedBrother]
-        ) {
-
-            const brother =
-                brothers[selectedBrother];
+    brotherTitle.textContent =
+        brother.title;
 
 
-            brotherTitle.textContent =
-                brother.title;
+    letter.textContent =
+        brother.letter;
 
 
-            letter.textContent =
-                brother.letter;
+    console.log(
+        "Showing letter for:",
+        selectedBrother
+    );
+
+}
 
 
-            console.log(
-                "Showing letter for:",
-                selectedBrother
-            );
+/* =====================================================
+   ERROR
+===================================================== */
 
-        }
+else {
 
-
-        // =============================================
-        // NO NAME FOUND
-        // =============================================
-
-        else {
-
-            brotherTitle.textContent =
-                "Oops! ❤️";
+    brotherTitle.textContent =
+        "Oops! ❤️";
 
 
-            letter.textContent =
-                "We couldn't find your Rakhi selection. Please go back and choose your name again.";
+    letter.textContent =
+        "We couldn't find your Rakhi selection. Please go back and choose your name again.";
 
 
-            console.log(
-                "No valid brother selection found."
-            );
+    console.log(
+        "No valid brother selection found."
+    );
 
-        }
+}
 
-    </script>
+</script>
 
 
 </body>
