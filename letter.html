@@ -1,0 +1,569 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Your Rakhi Letter ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+
+            margin: 0;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 25px;
+
+            background:
+                radial-gradient(circle at top,
+                    #64152f,
+                    #100207 70%);
+
+            font-family: Georgia, serif;
+
+            color: #ffe9c0;
+
+        }
+
+
+        .letter-card {
+
+            width: min(650px, 95%);
+
+            padding: 45px 35px;
+
+            border-radius: 30px;
+
+            background:
+                rgba(35, 6, 18, 0.96);
+
+            border:
+                1px solid rgba(255, 215, 140, 0.65);
+
+            box-shadow:
+
+                0 25px 80px rgba(0, 0, 0, 0.7),
+
+                0 0 50px rgba(255, 190, 90, 0.12);
+
+            text-align: center;
+
+            animation:
+                appear 0.9s ease;
+
+        }
+
+
+        .label {
+
+            font-family: Arial, sans-serif;
+
+            font-size: 12px;
+
+            letter-spacing: 3px;
+
+            color: #d9a94f;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        h1 {
+
+            margin: 5px 0;
+
+            color: #ffd98f;
+
+            font-size: 38px;
+
+            font-weight: normal;
+
+        }
+
+
+        .rakhi {
+
+            margin: 20px 0;
+
+            font-size: 45px;
+
+        }
+
+
+        .line {
+
+            width: 80px;
+
+            height: 2px;
+
+            margin: 25px auto;
+
+            background: #e8bd65;
+
+        }
+
+
+        #letter {
+
+            white-space: pre-line;
+
+            text-align: left;
+
+            font-size: 18px;
+
+            line-height: 2;
+
+            color: #f0d8dc;
+
+        }
+
+
+        .signature {
+
+            margin-top: 35px;
+
+            text-align: right;
+
+            color: #ffd98f;
+
+            font-size: 20px;
+
+            line-height: 1.7;
+
+        }
+
+
+        .again-button {
+
+            display: inline-block;
+
+            margin-top: 30px;
+
+            padding: 14px 25px;
+
+            border:
+                1px solid #e8bd65;
+
+            border-radius: 50px;
+
+            background:
+                linear-gradient(135deg,
+                    #851d3a,
+                    #481020);
+
+            color: #ffe4a1;
+
+            text-decoration: none;
+
+            font-family: Arial, sans-serif;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.2s ease;
+
+        }
+
+
+        .again-button:hover {
+
+            transform:
+                scale(1.05);
+
+        }
+
+
+        @keyframes appear {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(30px) scale(0.96);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0) scale(1);
+
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .letter-card {
+
+                padding:
+                    35px 22px;
+
+            }
+
+            h1 {
+
+                font-size: 30px;
+
+            }
+
+            #letter {
+
+                font-size: 16px;
+
+                line-height: 1.8;
+
+            }
+
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="letter-card">
+
+
+        <div class="label">
+
+            THIS ONE IS JUST FOR YOU ✦
+
+        </div>
+
+
+        <h1 id="brotherTitle">
+
+            Happy Rakhi ❤️
+
+        </h1>
+
+
+        <div class="rakhi">
+
+            🎀
+
+        </div>
+
+
+        <div class="line"></div>
+
+
+        <div id="letter">
+
+            Loading your letter...
+
+        </div>
+
+
+        <div class="signature">
+
+            With lots of love,<br>
+
+            Your Sister ❤️
+
+        </div>
+
+
+        <a class="again-button" href="gift.html">
+            🎁 ONE LAST SURPRISE
+        </a>
+
+        <a class="again-button" href="index.html">
+            🎀 EXPERIENCE AGAIN
+        </a>
+
+    </div>
+
+
+    <script>
+
+
+        // =====================================================
+        // BROTHER DATA
+        // =====================================================
+
+        const brothers = {
+
+            "Aadi": {
+
+                title:
+                    "Happy Rakhi, Aadi! ❤️",
+
+                letter:
+                    `We fight like crazy, but I know you love me the most, and I love you just as much.
+
+No matter how much we fight, you’ll always be my favourite headache. 😂`
+
+            },
+
+
+            "Aryan": {
+
+                title:
+                    "Happy Rakhi, Golu! ❤️",
+
+                letter:
+                    `You’re always feeding me everything you love, and somehow that’s your way of showing love.
+
+Stay sweet and caring always. Love you! 🫶`
+
+            },
+
+
+            "Ashish": {
+
+                title:
+                    "Happy Rakhi, Ashish! ❤️",
+
+                letter:
+                    `We don’t talk much, but I’ve always found you mature and sensible.
+
+I’m glad to have you as my brother. Stay the same!`
+
+            },
+
+
+            "Manish Bhaiya": {
+
+                title:
+                    "Happy Rakhi, Bhaiya! ❤️",
+
+                letter:
+                    `You’re the eldest and the one who cares for everyone.
+
+Thank you for always looking after us. We’re lucky to have you. ❤️`
+
+            },
+
+
+            "Sandip Bhaiya": {
+
+                title:
+                    "Happy Rakhi, Bhaiya! ❤️",
+
+                letter:
+                    `Happy Rakhi to our funniest and shyest brother! 😂❤️
+
+And of course, our amazing cook!
+
+You may be quiet, but you always make things better.
+
+Love you, Bhaiya!`
+
+            },
+
+
+            "Prince Bhaiya": {
+
+                title:
+                    "Happy Rakhi, Bhaiya! ❤️",
+
+                letter:
+                    `We may not talk much, but you’re still deeply loved and an important part of our family.
+
+Stay happy always!`
+
+            },
+
+
+            "Mandip Bhaiya": {
+
+                title:
+                    "Happy Rakhi to the craziest and most annoying one! 😂❤️",
+
+                letter:
+                    `You’re always drunk and up to something, but somehow we share a really special bond.
+
+Life would be boring without you!
+
+Love you, Bhaiya.`
+
+            }
+
+        };
+
+
+        // =====================================================
+        // GET BROTHER FROM URL
+        // =====================================================
+
+        const urlParams =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const brotherFromURL =
+            urlParams.get(
+                "brother"
+            );
+
+
+        // =====================================================
+        // GET BROTHER FROM LOCAL STORAGE
+        // =====================================================
+
+        const brotherFromStorage =
+            localStorage.getItem(
+                "selectedBrother"
+            );
+
+
+        // =====================================================
+        // FINAL SELECTION
+        //
+        // URL HAS PRIORITY
+        // LOCAL STORAGE IS BACKUP
+        // =====================================================
+
+        const selectedBrother =
+            brotherFromURL ||
+            brotherFromStorage;
+
+
+        console.log(
+            "================================"
+        );
+
+
+        console.log(
+            "LETTER PAGE"
+        );
+
+
+        console.log(
+            "Brother from URL:",
+            brotherFromURL
+        );
+
+
+        console.log(
+            "Brother from storage:",
+            brotherFromStorage
+        );
+
+
+        console.log(
+            "Final brother:",
+            selectedBrother
+        );
+
+
+        console.log(
+            "================================"
+        );
+
+
+        // =====================================================
+        // GET ELEMENTS
+        // =====================================================
+
+        const brotherTitle =
+            document.getElementById(
+                "brotherTitle"
+            );
+
+
+        const letter =
+            document.getElementById(
+                "letter"
+            );
+
+
+        // =====================================================
+        // DISPLAY LETTER
+        // =====================================================
+
+        if (
+
+            selectedBrother &&
+
+            brothers[selectedBrother]
+
+        ) {
+
+
+            // Save again
+
+            localStorage.setItem(
+
+                "selectedBrother",
+
+                selectedBrother
+
+            );
+
+
+            const brother =
+                brothers[selectedBrother];
+
+
+            brotherTitle.textContent =
+                brother.title;
+
+
+            letter.textContent =
+                brother.letter;
+
+
+            console.log(
+                "✅ Correct personalized letter loaded!"
+            );
+
+
+        }
+
+
+        // =====================================================
+        // NO SELECTION
+        // =====================================================
+
+        else {
+
+
+            brotherTitle.textContent =
+                "Oops! ❤️";
+
+
+            letter.textContent =
+                "We couldn't find your Rakhi selection. Please go back and choose your name again.";
+
+
+            console.error(
+                "❌ No valid brother selected."
+            );
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
+```

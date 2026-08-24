@@ -1,0 +1,1449 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rakhi Magic 🎀</title>
+
+
+    <!-- =====================================================
+         MEDIAPIPE
+    ====================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            min-height: 100vh;
+
+            background:
+                radial-gradient(circle at top,
+                    #59152d,
+                    #13040a 75%);
+
+            color: white;
+
+            font-family: Arial, sans-serif;
+
+            overflow: hidden;
+
+        }
+
+
+        /* =====================================================
+           APP
+        ====================================================== */
+
+        .app {
+
+            width: 100vw;
+
+            height: 100vh;
+
+            position: relative;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+        }
+
+
+        /* =====================================================
+           HEADER
+        ====================================================== */
+
+        .header {
+
+            position: absolute;
+
+            top: 25px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            z-index: 20;
+
+            text-align: center;
+
+            width: 90%;
+
+        }
+
+
+        .header-small {
+
+            font-size: 11px;
+
+            letter-spacing: 4px;
+
+            color: #d8aa58;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .header h1 {
+
+            margin: 0;
+
+            font-family: Georgia, serif;
+
+            font-size: 32px;
+
+            font-weight: normal;
+
+            color: #ffe2a1;
+
+        }
+
+
+        .selected-name {
+
+            margin-top: 8px;
+
+            font-size: 14px;
+
+            color: #e9cbd1;
+
+        }
+
+
+        #nameDisplay {
+
+            color: #ffd27b;
+
+            font-weight: bold;
+
+        }
+
+
+        /* =====================================================
+           CAMERA CONTAINER
+        ====================================================== */
+
+        .camera-container {
+
+            position: relative;
+
+            width: min(900px, 94vw);
+
+            height: min(680px, 76vh);
+
+            border-radius: 28px;
+
+            overflow: hidden;
+
+            border:
+                1px solid rgba(255, 215, 150, 0.45);
+
+            background: #080206;
+
+            box-shadow:
+                0 25px 80px rgba(0, 0, 0, 0.7);
+
+        }
+
+
+        /* =====================================================
+           CAMERA
+        ====================================================== */
+
+        #camera {
+
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            transform: scaleX(-1);
+
+        }
+
+
+        /* =====================================================
+           CANVAS
+        ====================================================== */
+
+        #canvas {
+
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            pointer-events: none;
+
+        }
+
+
+        /* =====================================================
+           RAKHI
+        ====================================================== */
+
+        #rakhi {
+
+            position: absolute;
+
+            width: 300px;
+
+            height: 300px;
+
+            object-fit: contain;
+
+            display: none;
+
+            pointer-events: none;
+
+            z-index: 10;
+
+            transform-origin: center center;
+
+            filter:
+                drop-shadow(0 8px 15px rgba(0, 0, 0, 0.45));
+
+        }
+
+
+        /* =====================================================
+           STATUS
+        ====================================================== */
+
+        .status-box {
+
+            position: absolute;
+
+            left: 50%;
+
+            bottom: 25px;
+
+            transform: translateX(-50%);
+
+            z-index: 20;
+
+            width: min(500px, 88%);
+
+            padding: 15px 20px;
+
+            border-radius: 18px;
+
+            text-align: center;
+
+            background:
+                rgba(10, 2, 6, 0.78);
+
+            border:
+                1px solid rgba(255, 215, 150, 0.3);
+
+            backdrop-filter: blur(10px);
+
+        }
+
+
+        #status {
+
+            margin: 0;
+
+            color: #f4dce2;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =====================================================
+           START BUTTON
+        ====================================================== */
+
+        #startButton {
+
+            position: absolute;
+
+            left: 50%;
+
+            top: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            z-index: 30;
+
+            padding: 18px 35px;
+
+            border: none;
+
+            border-radius: 50px;
+
+            background:
+                linear-gradient(135deg,
+                    #a6264b,
+                    #61142d);
+
+            color: #ffe7a8;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            letter-spacing: 1px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.5);
+
+        }
+
+
+        #startButton:hover {
+
+            transform:
+                translate(-50%, -50%) scale(1.05);
+
+        }
+
+
+        /* =====================================================
+           SUCCESS SCREEN
+        ====================================================== */
+
+        #successScreen {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 100;
+
+            display: none;
+
+            justify-content: center;
+
+            align-items: center;
+
+            background:
+                radial-gradient(circle,
+                    rgba(91, 20, 47, 0.98),
+                    rgba(10, 2, 6, 0.99));
+
+            text-align: center;
+
+            padding: 25px;
+
+        }
+
+
+        .success-card {
+
+            max-width: 550px;
+
+            padding: 45px 30px;
+
+            border-radius: 30px;
+
+            border:
+                1px solid rgba(255, 215, 150, 0.55);
+
+            background:
+                rgba(35, 7, 18, 0.95);
+
+            box-shadow:
+                0 30px 100px rgba(0, 0, 0, 0.7);
+
+            animation:
+                successAppear 0.7s ease;
+
+        }
+
+
+        .success-rakhi {
+
+            width: 150px;
+
+            height: 150px;
+
+            object-fit: contain;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .success-card h2 {
+
+            margin: 5px 0 15px;
+
+            color: #ffd98f;
+
+            font-family: Georgia, serif;
+
+            font-size: 34px;
+
+            font-weight: normal;
+
+        }
+
+
+        .success-card p {
+
+            color: #e8d2d8;
+
+            line-height: 1.7;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        #letterButton {
+
+            padding: 15px 28px;
+
+            border: none;
+
+            border-radius: 50px;
+
+            background:
+                linear-gradient(135deg,
+                    #c02d5a,
+                    #74152f);
+
+            color: white;
+
+            font-weight: bold;
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+        }
+
+
+        #letterButton:hover {
+
+            transform: scale(1.05);
+
+        }
+
+
+        @keyframes successAppear {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    scale(0.9) translateY(20px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    scale(1) translateY(0);
+
+            }
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ====================================================== */
+
+        @media (max-width: 600px) {
+
+            .header h1 {
+
+                font-size: 25px;
+
+            }
+
+
+            .camera-container {
+
+                height: 70vh;
+
+                width: 95vw;
+
+            }
+
+
+            #rakhi {
+
+                width: 300px;
+
+                height: 300px;
+
+            }
+
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="app">
+
+
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+
+        <div class="header">
+
+            <div class="header-small">
+                YOUR RAKHI IS WAITING ✦
+            </div>
+
+
+            <h1>
+                Tie Your Rakhi
+            </h1>
+
+
+            <div class="selected-name">
+
+                For:
+
+                <span id="nameDisplay">
+                    Loading...
+                </span>
+
+                ❤️
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             CAMERA
+        ================================================== -->
+
+        <div class="camera-container">
+
+
+            <video id="camera" autoplay playsinline>
+            </video>
+
+
+            <canvas id="canvas">
+            </canvas>
+
+
+            <img id="rakhi" src="rakhi.png" alt="Rakhi">
+
+
+            <button id="startButton" type="button">
+
+                ✨ BEGIN THE MAGIC
+
+            </button>
+
+
+            <div class="status-box">
+
+                <p id="status">
+                    Press "Begin the Magic" to start.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         SUCCESS SCREEN
+    ====================================================== -->
+
+    <div id="successScreen">
+
+
+        <div class="success-card">
+
+
+            <img class="success-rakhi" src="rakhi.png" alt="Rakhi">
+
+
+            <h2>
+                🎀 Rakhi Tied! ❤️
+            </h2>
+
+
+            <p id="successText">
+                Your Rakhi is ready.
+            </p>
+
+
+            <button id="letterButton" type="button">
+
+                💌 OPEN YOUR RAKHI LETTER
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // =====================================================
+        // GET BROTHER
+        // URL HAS PRIORITY
+        // =====================================================
+
+        const urlParams =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const brotherFromURL =
+            urlParams.get("brother");
+
+
+        const brotherFromStorage =
+            localStorage.getItem(
+                "selectedBrother"
+            );
+
+
+        const selectedBrother =
+            brotherFromURL ||
+            brotherFromStorage;
+
+
+        // =====================================================
+        // IF NO BROTHER WAS SELECTED
+        // =====================================================
+
+        if (!selectedBrother) {
+
+            console.error(
+                "❌ No brother selected"
+            );
+
+            window.location.href =
+                "index.html";
+
+        }
+
+
+        // =====================================================
+        // SAVE NAME AGAIN
+        // =====================================================
+
+        localStorage.setItem(
+            "selectedBrother",
+            selectedBrother
+        );
+
+
+        // =====================================================
+        // ELEMENTS
+        // =====================================================
+
+        const nameDisplay =
+            document.getElementById(
+                "nameDisplay"
+            );
+
+
+        const status =
+            document.getElementById(
+                "status"
+            );
+
+
+        const startButton =
+            document.getElementById(
+                "startButton"
+            );
+
+
+        const video =
+            document.getElementById(
+                "camera"
+            );
+
+
+        const canvas =
+            document.getElementById(
+                "canvas"
+            );
+
+
+        const ctx =
+            canvas.getContext("2d");
+
+
+        const rakhi =
+            document.getElementById(
+                "rakhi"
+            );
+
+
+        const successScreen =
+            document.getElementById(
+                "successScreen"
+            );
+
+
+        const successText =
+            document.getElementById(
+                "successText"
+            );
+
+
+        const letterButton =
+            document.getElementById(
+                "letterButton"
+            );
+
+
+        // =====================================================
+        // SHOW BROTHER NAME
+        // =====================================================
+
+        nameDisplay.textContent =
+            selectedBrother;
+
+
+        console.log(
+            "🎀 Selected brother:",
+            selectedBrother
+        );
+
+
+        // =====================================================
+        // CAMERA VARIABLES
+        // =====================================================
+
+        let cameraStarted = false;
+
+        let rakhiTied = false;
+
+        let stableFrames = 0;
+
+        let lastX = null;
+
+        let lastY = null;
+
+        let lastAngle = 0;
+
+
+        // =====================================================
+        // MEDIAPIPE HANDS
+        // =====================================================
+
+        const hands =
+            new Hands({
+
+                locateFile:
+                    function (file) {
+
+                        return (
+                            "https://cdn.jsdelivr.net/npm/" +
+                            "@mediapipe/hands/" +
+                            file
+                        );
+
+                    }
+
+            });
+
+
+        hands.setOptions({
+
+            maxNumHands: 1,
+
+            modelComplexity: 1,
+
+            minDetectionConfidence: 0.55,
+
+            minTrackingConfidence: 0.55
+
+        });
+
+
+        // =====================================================
+        // MEDIAPIPE RESULTS
+        // =====================================================
+
+        hands.onResults(
+            onResults
+        );
+
+
+        // =====================================================
+        // START BUTTON
+        // =====================================================
+
+        startButton.addEventListener(
+            "click",
+            startCamera
+        );
+
+
+        // =====================================================
+        // START CAMERA
+        // =====================================================
+
+        async function startCamera() {
+
+            if (cameraStarted) {
+                return;
+            }
+
+
+            try {
+
+                status.textContent =
+                    "Starting camera...";
+
+
+                startButton.style.display =
+                    "none";
+
+
+                const stream =
+                    await navigator.mediaDevices
+                        .getUserMedia({
+
+                            video: {
+
+                                facingMode:
+                                    "user",
+
+                                width: {
+                                    ideal: 1280
+                                },
+
+                                height: {
+                                    ideal: 720
+                                }
+
+                            },
+
+                            audio: false
+
+                        });
+
+
+                video.srcObject =
+                    stream;
+
+
+                await video.play();
+
+
+                cameraStarted =
+                    true;
+
+
+                status.textContent =
+                    "Show your wrist to the camera 🖐️";
+
+
+                resizeCanvas();
+
+
+                processVideo();
+
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "❌ Camera error:",
+                    error
+                );
+
+
+                startButton.style.display =
+                    "block";
+
+
+                status.textContent =
+                    "❌ Camera could not start. Please allow camera access.";
+
+            }
+
+        }
+
+
+        // =====================================================
+        // RESIZE CANVAS
+        // =====================================================
+
+        function resizeCanvas() {
+
+            canvas.width =
+                video.videoWidth ||
+                1280;
+
+
+            canvas.height =
+                video.videoHeight ||
+                720;
+
+        }
+
+
+        window.addEventListener(
+            "resize",
+            resizeCanvas
+        );
+
+
+        // =====================================================
+        // PROCESS VIDEO
+        // =====================================================
+
+        async function processVideo() {
+
+            if (
+                !cameraStarted ||
+                video.readyState < 2
+            ) {
+
+                requestAnimationFrame(
+                    processVideo
+                );
+
+                return;
+
+            }
+
+
+            try {
+
+                await hands.send({
+
+                    image: video
+
+                });
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "MediaPipe error:",
+                    error
+                );
+
+            }
+
+
+            requestAnimationFrame(
+                processVideo
+            );
+
+        }
+
+
+        // =====================================================
+        // HAND DETECTION
+        // =====================================================
+
+        function onResults(results) {
+
+            if (!cameraStarted) {
+                return;
+            }
+
+
+            resizeCanvas();
+
+
+            ctx.clearRect(
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+
+
+            // =================================================
+            // HAND FOUND
+            // =================================================
+
+            if (
+                results.multiHandLandmarks &&
+                results.multiHandLandmarks.length > 0
+            ) {
+
+                const landmarks =
+                    results.multiHandLandmarks[0];
+
+
+                // =================================================
+                // LANDMARKS
+                // =================================================
+
+                const wrist =
+                    landmarks[0];
+
+                const indexBase =
+                    landmarks[5];
+
+                const pinkyBase =
+                    landmarks[17];
+
+
+                // =================================================
+                // MIRRORED CAMERA COORDINATES
+                // =================================================
+
+                const wristX =
+                    (1 - wrist.x) *
+                    canvas.width;
+
+
+                const wristY =
+                    wrist.y *
+                    canvas.height;
+
+
+                const indexX =
+                    (1 - indexBase.x) *
+                    canvas.width;
+
+
+                const indexY =
+                    indexBase.y *
+                    canvas.height;
+
+
+                const pinkyX =
+                    (1 - pinkyBase.x) *
+                    canvas.width;
+
+
+                const pinkyY =
+                    pinkyBase.y *
+                    canvas.height;
+
+
+                // =================================================
+                // WRIST WIDTH
+                // =================================================
+
+                const wristWidth =
+                    Math.sqrt(
+
+                        Math.pow(
+                            indexX - pinkyX,
+                            2
+                        )
+
+                        +
+
+                        Math.pow(
+                            indexY - pinkyY,
+                            2
+                        )
+
+                    );
+
+
+                // =================================================
+                // WRIST DIRECTION
+                // =================================================
+
+                const dx =
+                    indexX - pinkyX;
+
+
+                const dy =
+                    indexY - pinkyY;
+
+
+                const angle =
+                    Math.atan2(
+                        dy,
+                        dx
+                    ) *
+                    180 /
+                    Math.PI;
+
+
+                // =================================================
+                // RAKHI POSITION
+                //
+                // Move slightly toward the hand
+                // so the Rakhi sits ACROSS the wrist.
+                // =================================================
+
+                const offsetX =
+                    dx * 0.10;
+
+
+                const offsetY =
+                    dy * 0.10;
+
+
+                const rawX =
+                    wristX +
+                    offsetX;
+
+
+                const rawY =
+                    wristY +
+                    offsetY;
+
+
+                // =================================================
+                // CAMERA CONTAINER
+                // =================================================
+
+                const cameraRect =
+                    video.getBoundingClientRect();
+
+
+                const canvasRect =
+                    canvas.getBoundingClientRect();
+
+
+                // =================================================
+                // SCALE MEDIAPIPE COORDINATES
+                // TO DISPLAY SIZE
+                // =================================================
+
+                const scaleX =
+                    canvasRect.width /
+                    canvas.width;
+
+
+                const scaleY =
+                    canvasRect.height /
+                    canvas.height;
+
+
+                // =================================================
+                // CONVERT TO DISPLAY POSITION
+                // =================================================
+
+                const displayX =
+                    rawX *
+                    scaleX;
+
+
+                const displayY =
+                    rawY *
+                    scaleY;
+
+
+                // =================================================
+                // SMOOTHING
+                // =================================================
+
+                const smoothing =
+                    0.30;
+
+
+                if (lastX === null) {
+
+                    lastX =
+                        displayX;
+
+                    lastY =
+                        displayY;
+
+                    lastAngle =
+                        angle;
+
+                }
+
+                else {
+
+                    lastX =
+                        lastX +
+                        (
+                            displayX -
+                            lastX
+                        ) *
+                        smoothing;
+
+
+                    lastY =
+                        lastY +
+                        (
+                            displayY -
+                            lastY
+                        ) *
+                        smoothing;
+
+
+                    // Smooth angle while avoiding
+                    // sudden jumps around ±180°
+
+                    let angleDifference =
+                        angle -
+                        lastAngle;
+
+
+                    while (
+                        angleDifference > 180
+                    ) {
+
+                        angleDifference -=
+                            360;
+
+                    }
+
+
+                    while (
+                        angleDifference < -180
+                    ) {
+
+                        angleDifference +=
+                            360;
+
+                    }
+
+
+                    lastAngle =
+                        lastAngle +
+                        angleDifference *
+                        smoothing;
+
+                }
+
+
+                // =================================================
+                // PLACE RAKHI
+                // =================================================
+
+                rakhi.style.left =
+                    `${lastX}px`;
+
+
+                rakhi.style.top =
+                    `${lastY}px`;
+
+
+                rakhi.style.transform =
+                    `translate(-50%, -50%) rotate(${lastAngle}deg)`;
+
+
+                rakhi.style.display =
+                    "block";
+
+
+                // =================================================
+                // STATUS
+                // =================================================
+
+                status.textContent =
+                    "✨ Wrist detected! Hold still...";
+
+
+                // =================================================
+                // STABLE DETECTION
+                // =================================================
+
+                if (
+                    wristWidth > 35
+                ) {
+
+                    stableFrames++;
+
+                }
+
+                else {
+
+                    stableFrames = 0;
+
+                }
+
+
+                // =================================================
+                // TIE RAKHI
+                // =================================================
+
+                if (
+                    stableFrames > 35 &&
+                    !rakhiTied
+                ) {
+
+                    tieRakhi();
+
+                }
+
+            }
+
+
+            // =================================================
+            // NO HAND
+            // =================================================
+
+            else {
+
+                rakhi.style.display =
+                    "none";
+
+
+                stableFrames =
+                    0;
+
+
+                lastX =
+                    null;
+
+
+                lastY =
+                    null;
+
+
+                status.textContent =
+                    "🖐️ Show your wrist to the camera";
+
+            }
+
+        }
+
+
+        // =====================================================
+        // TIE RAKHI
+        // =====================================================
+
+        function tieRakhi() {
+
+            if (rakhiTied) {
+                return;
+            }
+
+
+            rakhiTied =
+                true;
+
+
+            status.textContent =
+                "🎀 Rakhi tied successfully!";
+
+
+            setTimeout(
+                showSuccess,
+                1200
+            );
+
+        }
+
+
+        // =====================================================
+        // SUCCESS SCREEN
+        // =====================================================
+
+        function showSuccess() {
+
+            successText.textContent =
+                `Your Rakhi is ready, ${selectedBrother}! ❤️`;
+
+
+            successScreen.style.display =
+                "flex";
+
+        }
+
+
+        // =====================================================
+        // OPEN LETTER
+        // =====================================================
+
+        letterButton.addEventListener(
+            "click",
+            function () {
+
+                // Keep the selected brother
+
+                localStorage.setItem(
+                    "selectedBrother",
+                    selectedBrother
+                );
+
+
+                console.log(
+                    "Opening letter for:",
+                    selectedBrother
+                );
+
+
+                window.location.href =
+                    "letter.html";
+
+            }
+        );
+
+
+        // =====================================================
+        // DEBUG
+        // =====================================================
+
+        console.log(
+            "🎀 AR page loaded"
+        );
+
+        console.log(
+            "Camera:",
+            video
+        );
+
+        console.log(
+            "Rakhi:",
+            rakhi
+        );
+
+        console.log(
+            "Selected brother:",
+            selectedBrother
+        );
+
+    </script>
+
+</body>
+
+</html>
+```

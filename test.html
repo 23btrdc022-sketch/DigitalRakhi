@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Rakhi From Me ❤️</title>
+
+
+    <style>
+        /* =================================================
+           RESET
+        ================================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html,
+        body {
+
+            margin: 0;
+
+            padding: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            font-family: Arial, sans-serif;
+
+        }
+
+
+        body {
+
+            overflow: hidden;
+
+            background: #160308;
+
+        }
+
+
+
+        /* =================================================
+           PAGE 1 — RAKHI HOME
+        ================================================= */
+
+        #home {
+
+            position: fixed;
+
+            inset: 0;
+
+            width: 100vw;
+
+            height: 100vh;
+
+            background-image:
+                url("rakhi-home.png");
+
+            background-size: cover;
+
+            background-position: center;
+
+            background-repeat: no-repeat;
+
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content: center;
+
+            padding-bottom: 9vh;
+
+        }
+
+
+
+        /* =================================================
+           OPEN BUTTON
+        ================================================= */
+
+        #open {
+
+            position: relative;
+
+            z-index: 10;
+
+            padding:
+                17px 35px;
+
+            border:
+                1px solid #f5cc70;
+
+            border-radius: 50px;
+
+            background:
+                linear-gradient(135deg,
+                    #8b1e38,
+                    #531020);
+
+            color: #ffe6a7;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 0 25px rgba(255,
+                    200,
+                    90,
+                    0.35);
+
+            transition:
+                0.3s ease;
+
+        }
+
+
+        #open:hover {
+
+            transform:
+                translateY(-4px) scale(1.04);
+
+            box-shadow:
+                0 0 40px rgba(255,
+                    200,
+                    90,
+                    0.6);
+
+        }
+
+
+
+        /* =================================================
+           PAGE 2 — BROTHER SELECTION
+        ================================================= */
+
+        #brothers {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 20;
+
+            background:
+                radial-gradient(circle at center,
+                    #5b1d32 0%,
+                    #2b0915 48%,
+                    #090207 100%);
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            overflow-y: auto;
+
+            padding: 30px;
+
+        }
+
+
+        #brothers.show {
+
+            display: flex;
+
+        }
+
+
+
+        /* =================================================
+           SELECTION CONTENT
+        ================================================= */
+
+        .selection {
+
+            width:
+                min(850px,
+                    95%);
+
+            text-align: center;
+
+            color: white;
+
+        }
+
+
+        .small-title {
+
+            color: #f5cc70;
+
+            font-size: 10px;
+
+            letter-spacing: 5px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .selection h1 {
+
+            margin:
+                0 0 15px;
+
+            color: #f7d98f;
+
+            font-family:
+                Georgia,
+                serif;
+
+            font-size:
+                clamp(42px,
+                    7vw,
+                    70px);
+
+            font-weight: normal;
+
+        }
+
+
+        .selection h1 span {
+
+            color: #ff9983;
+
+            font-family:
+                "Brush Script MT",
+                cursive;
+
+        }
+
+
+        .selection p {
+
+            color: #dcbfc6;
+
+            line-height: 1.7;
+
+            margin-bottom: 40px;
+
+        }
+
+
+
+        /* =================================================
+           BROTHER GRID
+        ================================================= */
+
+        .grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,
+                    1fr);
+
+            gap: 15px;
+
+        }
+
+
+
+        /* =================================================
+           BROTHER BUTTON
+        ================================================= */
+
+        .brother {
+
+            min-height: 105px;
+
+            padding: 20px;
+
+            border:
+                1px solid rgba(245,
+                    204,
+                    112,
+                    0.4);
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(145deg,
+                    rgba(110,
+                        22,
+                        47,
+                        0.85),
+                    rgba(32,
+                        6,
+                        16,
+                        0.9));
+
+            color: #ffe2a2;
+
+            font-family:
+                Georgia,
+                serif;
+
+            font-size: 20px;
+
+            cursor: pointer;
+
+            transition:
+                0.3s ease;
+
+        }
+
+
+        .brother:hover {
+
+            transform:
+                translateY(-6px);
+
+            border-color:
+                #f5cc70;
+
+            box-shadow:
+                0 15px 35px rgba(0,
+                    0,
+                    0,
+                    0.45);
+
+        }
+
+
+
+        /* =================================================
+           PAGE 3 — LETTER
+        ================================================= */
+
+        #letterPage {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 30;
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            overflow-y: auto;
+
+            padding: 20px;
+
+            background:
+                radial-gradient(circle at center,
+                    #5b1d32 0%,
+                    #260812 50%,
+                    #080207 100%);
+
+        }
+
+
+        #letterPage.show {
+
+            display: flex;
+
+        }
+
+
+
+        /* =================================================
+           LETTER CARD
+        ================================================= */
+
+        .card {
+
+            position: relative;
+
+            width:
+                min(720px,
+                    95%);
+
+            max-height: 92vh;
+
+            overflow-y: auto;
+
+            padding:
+                40px 35px 45px;
+
+            border:
+                1px solid rgba(245,
+                    204,
+                    112,
+                    0.5);
+
+            border-radius: 28px;
+
+            background:
+                linear-gradient(145deg,
+                    rgba(105,
+                        22,
+                        45,
+                        0.88),
+                    rgba(25,
+                        5,
+                        13,
+                        0.96));
+
+            text-align: center;
+
+            box-shadow:
+                0 30px 90px rgba(0,
+                    0,
+                    0,
+                    0.6);
+
+        }
+
+
+
+        /* =================================================
+           TOP DECORATION
+        ================================================= */
+
+        .top-decoration {
+
+            margin-bottom: 18px;
+
+            color: #e8b85d;
+
+            font-size: 15px;
+
+            letter-spacing: 4px;
+
+        }
+
+
+        .small {
+
+            color: #f5cc70;
+
+            font-size: 10px;
+
+            letter-spacing: 4px;
+
+        }
+
+
+
+        /* =================================================
+           BROTHER NAME
+        ================================================= */
+
+        #name {
+
+            margin:
+                12px 0;
+
+            color: #ffd98f;
+
+            font-family:
+                Georgia,
+                serif;
+
+            font-size:
+                clamp(38px,
+                    6vw,
+                    62px);
+
+            font-weight: normal;
+
+        }
+
+
+
+        /* =================================================
+           RAKHI DISPLAY
+        ================================================= */
+
+        .rakhi-display {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin:
+                25px auto 30px;
+
+        }
+
+
+        .thread {
+
+            width: 75px;
+
+            height: 2px;
+
+            background:
+                linear-gradient(90deg,
+                    transparent,
+                    #d49a43);
+
+        }
+
+
+        .thread:last-child {
+
+            background:
+                linear-gradient(90deg,
+                    #d49a43,
+                    transparent);
+
+        }
+
+
+        .mini-rakhi {
+
+            width: 72px;
+
+            height: 72px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 4px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(circle,
+                    #f8d77c 0%,
+                    #bc7928 40%,
+                    #76182e 43%,
+                    #a92d47 70%,
+                    #4d0e20 100%);
+
+            border:
+                3px solid #e5ad50;
+
+            box-shadow:
+
+                0 0 0 5px rgba(229,
+                    173,
+                    80,
+                    0.12),
+
+                0 0 30px rgba(229,
+                    173,
+                    80,
+                    0.25);
+
+        }
+
+
+        .mini-rakhi strong {
+
+            color: #fff0b5;
+
+            font-size: 19px;
+
+        }
+
+
+        .mini-rakhi span {
+
+            color: #fff1bd;
+
+            font-size: 9px;
+
+        }
+
+
+
+        /* =================================================
+           LETTER PAPER
+        ================================================= */
+
+        .letter-paper {
+
+            position: relative;
+
+            max-width: 590px;
+
+            margin: auto;
+
+            padding:
+                38px 35px;
+
+            background:
+                linear-gradient(145deg,
+                    #fff3d7,
+                    #f0d09d);
+
+            border-radius: 6px;
+
+            box-shadow:
+                0 15px 45px rgba(0,
+                    0,
+                    0,
+                    0.3);
+
+        }
+
+
+        #message {
+
+            color: #4b1c25;
+
+            font-family:
+                Georgia,
+                serif;
+
+            font-size: 18px;
+
+            line-height: 1.9;
+
+            text-align: left;
+
+            white-space: pre-line;
+
+        }
+
+
+        .paper-corner {
+
+            position: absolute;
+
+            top: 10px;
+
+            left: 15px;
+
+            color: #a56835;
+
+            font-size: 22px;
+
+        }
+
+
+        .paper-corner.bottom {
+
+            top: auto;
+
+            left: auto;
+
+            right: 15px;
+
+            bottom: 10px;
+
+            transform:
+                rotate(180deg);
+
+        }
+
+
+
+        /* =================================================
+           SURPRISE SECTION
+        ================================================= */
+
+        .surprise-section {
+
+            margin-top: 32px;
+
+        }
+
+
+        .surprise-line {
+
+            width: 110px;
+
+            height: 1px;
+
+            margin:
+                0 auto 18px;
+
+            background:
+                linear-gradient(90deg,
+                    transparent,
+                    #dca94e,
+                    transparent);
+
+        }
+
+
+        .surprise-section p {
+
+            margin-bottom: 15px;
+
+            color: #dcbcc3;
+
+            font-family:
+                Georgia,
+                serif;
+
+            font-style: italic;
+
+            font-size: 16px;
+
+        }
+
+
+        #giftButton {
+
+            padding:
+                15px 28px;
+
+            border:
+                1px solid #e8bd65;
+
+            border-radius: 50px;
+
+            background:
+                linear-gradient(135deg,
+                    #7d1933,
+                    #481020);
+
+            color: #ffe4a1;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 8px 25px rgba(0,
+                    0,
+                    0,
+                    0.3);
+
+            transition:
+                0.3s ease;
+
+        }
+
+
+        #giftButton:hover {
+
+            transform:
+                translateY(-4px) scale(1.03);
+
+            box-shadow:
+                0 12px 35px rgba(230,
+                    180,
+                    80,
+                    0.3);
+
+        }
+
+
+
+        /* =================================================
+           SURPRISE POPUP
+        ================================================= */
+
+        #surprise {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 100;
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            background:
+                rgba(5,
+                    1,
+                    4,
+                    0.85);
+
+            backdrop-filter:
+                blur(8px);
+
+        }
+
+
+        #surprise.show {
+
+            display: flex;
+
+        }
+
+
+        .surprise-card {
+
+            width:
+                min(450px,
+                    94%);
+
+            padding:
+                40px 25px;
+
+            border:
+                1px solid #e8bd65;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(145deg,
+                    #66152d,
+                    #21050f);
+
+            text-align: center;
+
+            color: white;
+
+            box-shadow:
+                0 30px 80px rgba(0,
+                    0,
+                    0,
+                    0.6);
+
+            animation:
+                pop 0.4s ease;
+
+        }
+
+
+        @keyframes pop {
+
+            from {
+
+                transform:
+                    scale(0.7);
+
+                opacity: 0;
+
+            }
+
+            to {
+
+                transform:
+                    scale(1);
+
+                opacity: 1;
+
+            }
+
+        }
+
+
+        .surprise-card h2 {
+
+            margin-top: 0;
+
+            color: #ffd98f;
+
+            font-family:
+                Georgia,
+                serif;
+
+            font-size: 32px;
+
+        }
+
+
+        .surprise-card p {
+
+            color: #e7cbd0;
+
+            line-height: 1.7;
+
+        }
+
+
+        #closeSurprise {
+
+            margin-top: 20px;
+
+            padding:
+                11px 24px;
+
+            border:
+                1px solid #dca94e;
+
+            border-radius: 30px;
+
+            background:
+                transparent;
+
+            color: #f5cc70;
+
+            cursor: pointer;
+
+        }
+
+
+
+        /* =================================================
+           MOBILE
+        ================================================= */
+
+        @media (max-width: 600px) {
+
+            #home {
+
+                padding-bottom: 8vh;
+
+            }
+
+
+            #open {
+
+                padding:
+                    15px 25px;
+
+                font-size: 11px;
+
+            }
+
+
+            .grid {
+
+                grid-template-columns:
+                    repeat(2,
+                        1fr);
+
+                gap: 10px;
+
+            }
+
+
+            .brother {
+
+                min-height: 85px;
+
+                padding: 15px 8px;
+
+                font-size: 17px;
+
+            }
+
+
+            .card {
+
+                padding:
+                    30px 18px 35px;
+
+            }
+
+
+            .letter-paper {
+
+                padding:
+                    30px 22px;
+
+            }
+
+
+            #message {
+
+                font-size: 16px;
+
+                line-height: 1.8;
+
+            }
+
+
+            .mini-rakhi {
+
+                width: 60px;
+
+                height: 60px;
+
+            }
+
+
+            .thread {
+
+                width: 40px;
+
+            }
+
+        }
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+
+    <!-- =================================================
+         PAGE 1
+    ================================================= -->
+
+    <section id="home">
+
+        <button id="open">
+
+            OPEN YOUR RAKHI ✦
+
+        </button>
+
+    </section>
+
+
+
+    <!-- =================================================
+         PAGE 2
+    ================================================= -->
+
+    <section id="brothers">
+
+        <div class="selection">
+
+
+            <div class="small-title">
+
+                A RAKHI HAS ARRIVED ✦
+
+            </div>
+
+
+            <h1>
+
+                Who are you,
+                <span>bhaiya?</span>
+
+            </h1>
+
+
+            <p>
+
+                Choose your name and discover
+
+                <br>
+
+                what I made especially for you. ❤️
+
+            </p>
+
+
+            <div class="grid">
+
+
+                <button class="brother" data-name="Aadi">
+                    Aadi
+                </button>
+
+
+                <button class="brother" data-name="Aryan">
+                    Aryan
+                </button>
+
+
+                <button class="brother" data-name="Ashish">
+                    Ashish
+                </button>
+
+
+                <button class="brother" data-name="Manish Bhaiya">
+                    Manish Bhaiya
+                </button>
+
+
+                <button class="brother" data-name="Sandip Bhaiya">
+                    Sandip Bhaiya
+                </button>
+
+
+                <button class="brother" data-name="Prince Bhaiya">
+                    Prince Bhaiya
+                </button>
+
+
+                <button class="brother" data-name="Mandip Bhaiya">
+                    Mandip Bhaiya
+                </button>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         PAGE 3 — PERSONAL LETTER
+    ================================================= -->
+
+    <section id="letterPage">
+
+        <div class="card">
+
+
+            <div class="top-decoration">
+
+                ✦ ─── 🪔 ─── ✦
+
+            </div>
+
+
+            <div class="small">
+
+                THIS ONE IS JUST FOR YOU ✦
+
+            </div>
+
+
+            <h1 id="name">
+
+                Happy Rakhi ❤️
+
+            </h1>
+
+
+            <!-- RAKHI -->
+
+            <div class="rakhi-display">
+
+                <div class="thread"></div>
+
+
+                <div class="mini-rakhi">
+
+                    <span>✦</span>
+
+                    <strong>ॐ</strong>
+
+                    <span>✦</span>
+
+                </div>
+
+
+                <div class="thread"></div>
+
+            </div>
+
+
+
+            <!-- LETTER -->
+
+            <div class="letter-paper">
+
+
+                <div class="paper-corner">
+
+                    ❦
+
+                </div>
+
+
+                <div id="message"></div>
+
+
+                <div class="paper-corner bottom">
+
+                    ❦
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- SURPRISE -->
+
+            <div class="surprise-section">
+
+
+                <div class="surprise-line"></div>
+
+
+                <p>
+
+                    I have one more thing for you...
+
+                </p>
+
+
+                <button id="giftButton" type="button">
+
+                    OPEN YOUR SURPRISE 🎁
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         SURPRISE POPUP
+    ================================================= -->
+
+    <section id="surprise">
+
+        <div class="surprise-card">
+
+            <h2>
+
+                Wait... 👀
+
+            </h2>
+
+
+            <p>
+
+                You thought the Rakhi letter
+                was the whole surprise?
+
+                <br><br>
+
+                Nope. 😌
+
+                <br><br>
+
+                There's one more thing coming...
+
+                🎀❤️
+
+            </p>
+
+
+            <button id="closeSurprise" type="button">
+
+                BACK TO MY LETTER
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         JAVASCRIPT
+    ================================================= -->
+
+    <script>
+
+
+        /* =================================================
+           BROTHER LETTERS
+        ================================================= */
+
+        const letters = {
+
+
+            "Aadi": {
+
+                title:
+                    "Happy Rakhi, Aadi! ❤️",
+
+                message:
+                    `We fight like crazy, but I know you love me the most, and I love you just as much.
+
+No matter how much we fight, you’ll always be my favourite headache. 😂`
+
+            },
+
+
+            "Aryan": {
+
+                title:
+                    "Happy Rakhi, Golu! ❤️",
+
+                message:
+                    `You’re always feeding me everything you love, and somehow that’s your way of showing love.
+
+Stay sweet and caring always. Love you! 🫶`
+
+            },
+
+
+            "Ashish": {
+
+                title:
+                    "Happy Rakhi, Ashish! ❤️",
+
+                message:
+                    `We don’t talk much, but I’ve always found you mature and sensible.
+
+I’m glad to have you as my brother. Stay the same!`
+
+            },
+
+
+            "Manish Bhaiya": {
+
+                title:
+                    "Happy Rakhi, Bhaiya! ❤️",
+
+                message:
+                    `You’re the eldest and the one who cares for everyone.
+
+Thank you for always looking after us. We’re lucky to have you. ❤️`
+
+            },
+
+
+            "Sandip Bhaiya": {
+
+                title:
+                    "Happy Rakhi, Bhaiya! ❤️",
+
+                message:
+                    `Happy Rakhi to our funniest and shyest brother! 😂❤️
+
+And of course, our amazing cook!
+
+You may be quiet, but you always make things better.
+
+Love you, Bhaiya!`
+
+            },
+
+
+            "Prince Bhaiya": {
+
+                title:
+                    "Happy Rakhi, Bhaiya! ❤️",
+
+                message:
+                    `We may not talk much, but you’re still deeply loved and an important part of our family.
+
+Stay happy always!`
+
+            },
+
+
+            "Mandip Bhaiya": {
+
+                title:
+                    "Happy Rakhi to the craziest and most annoying one! 😂❤️",
+
+                message:
+                    `You’re always drunk and up to something, but somehow we share a really special bond.
+
+Life would be boring without you!
+
+Love you, Bhaiya.`
+
+            }
+
+        };
+
+
+
+        /* =================================================
+           PAGE 1 → PAGE 2
+        ================================================= */
+
+        document
+            .getElementById("open")
+            .addEventListener(
+                "click",
+                function () {
+
+                    document
+                        .getElementById("brothers")
+                        .classList
+                        .add("show");
+
+                }
+            );
+
+
+
+        /* =================================================
+           PAGE 2 → PAGE 3
+        ================================================= */
+
+        document
+            .querySelectorAll(".brother")
+            .forEach(
+                function (button) {
+
+                    button.addEventListener(
+                        "click",
+                        function () {
+
+
+                            const person =
+                                this.dataset.name;
+
+
+                            const data =
+                                letters[person];
+
+
+                            if (!data) {
+
+                                console.error(
+                                    "Brother not found:",
+                                    person
+                                );
+
+                                return;
+
+                            }
+
+
+                            /* Put name */
+
+                            document
+                                .getElementById("name")
+                                .textContent =
+                                data.title;
+
+
+                            /* Put exact letter */
+
+                            document
+                                .getElementById("message")
+                                .textContent =
+                                data.message;
+
+
+                            /* Hide brothers */
+
+                            document
+                                .getElementById("brothers")
+                                .classList
+                                .remove("show");
+
+
+                            /* Show letter */
+
+                            document
+                                .getElementById("letterPage")
+                                .classList
+                                .add("show");
+
+                        }
+
+                    );
+
+                }
+            );
+
+
+
+        /* =================================================
+           OPEN SURPRISE
+        ================================================= */
+
+        document
+            .getElementById("giftButton")
+            .addEventListener(
+                "click",
+                function () {
+
+                    document
+                        .getElementById("surprise")
+                        .classList
+                        .add("show");
+
+                }
+            );
+
+
+
+        /* =================================================
+           CLOSE SURPRISE
+        ================================================= */
+
+        document
+            .getElementById("closeSurprise")
+            .addEventListener(
+                "click",
+                function () {
+
+                    document
+                        .getElementById("surprise")
+                        .classList
+                        .remove("show");
+
+                }
+            );
+
+
+    </script>
+
+
+</body>
+
+</html>
