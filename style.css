@@ -6,27 +6,18 @@
     box-sizing: border-box;
 }
 
-
 html,
 body {
-
     margin: 0;
     padding: 0;
-
     width: 100%;
-    height: 100%;
-
+    min-height: 100%;
 }
 
-
 body {
-
-    overflow: hidden;
-
     background: #120307;
-
     font-family: Arial, sans-serif;
-
+    overflow-x: hidden;
 }
 
 
@@ -35,71 +26,46 @@ body {
 ===================================================== */
 
 .home-page {
-
     position: fixed;
-
     inset: 0;
-
-    width: 100vw;
-    height: 100vh;
-
+    width: 100%;
+    height: 100dvh;
     overflow: hidden;
-
     z-index: 1;
-
     background: #180307;
-
 }
 
-
-/* Actual Rakhi image */
-
 .rakhi-background {
-
     position: absolute;
-
     inset: 0;
-
     width: 100%;
     height: 100%;
 
-    background-image:
-        url("rakhi-home.png");
+    background-image: url("rakhi-home.png");
 
     background-size: cover;
-
     background-position: center center;
-
     background-repeat: no-repeat;
-
 }
 
 
 /* =====================================================
-   INVISIBLE BUTTON
+   OPEN RAKHI BUTTON
 ===================================================== */
 
-/*
-   This sits on top of the button that already
-   exists inside your Rakhi artwork.
-*/
-
 .open-button {
-
     position: absolute;
 
     left: 50%;
-
     top: 73%;
 
-    transform:
-        translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 
-    width: 300px;
-
+    width: min(300px, 70vw);
     height: 70px;
 
     border: none;
+    border-radius: 50px;
 
     background: transparent;
 
@@ -107,6 +73,7 @@ body {
 
     z-index: 10;
 
+    -webkit-tap-highlight-color: transparent;
 }
 
 
@@ -115,53 +82,43 @@ body {
 ===================================================== */
 
 .brothers-page {
-
     position: fixed;
-
     inset: 0;
 
     z-index: 20;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
-    padding: 30px;
+    padding: 30px 20px;
 
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 
     background:
-        radial-gradient(circle at 50% 35%,
+        radial-gradient(
+            circle at 50% 35%,
             #5b1d31 0%,
             #280914 48%,
-            #090207 100%);
+            #090207 100%
+        );
 
     opacity: 0;
-
     visibility: hidden;
 
-    transform:
-        scale(1.05);
+    transform: scale(1.05);
 
     transition:
         opacity 0.7s ease,
         transform 0.7s ease,
         visibility 0.7s;
-
 }
 
-
 .brothers-page.show {
-
     opacity: 1;
-
     visibility: visible;
-
-    transform:
-        scale(1);
-
+    transform: scale(1);
 }
 
 
@@ -170,71 +127,50 @@ body {
 ===================================================== */
 
 .selection-box {
-
-    width: min(900px,
-            95%);
-
+    width: min(900px, 100%);
     text-align: center;
 
-    padding:
-        30px 10px 50px;
-
+    padding: 30px 10px 50px;
 }
 
-
 .small-title {
-
     margin: 0 0 15px;
 
     color: #f4ca70;
 
     font-size: 11px;
-
     letter-spacing: 5px;
-
 }
 
-
 .selection-box h1 {
-
     margin: 0;
 
     color: #f7dfad;
 
     font-family: Georgia, serif;
 
-    font-size:
-        clamp(42px,
-            7vw,
-            76px);
+    font-size: clamp(40px, 7vw, 76px);
 
     font-weight: 400;
 
+    line-height: 1.1;
 }
 
-
 .selection-box h1 span {
-
     color: #ff987f;
 
     font-family:
         "Brush Script MT",
         cursive;
-
 }
 
-
 .selection-text {
-
-    margin:
-        25px 0 40px;
+    margin: 25px 0 40px;
 
     color: #d9bcc3;
 
     font-size: 15px;
-
     line-height: 1.7;
-
 }
 
 
@@ -243,7 +179,6 @@ body {
 ===================================================== */
 
 .brothers-grid {
-
     display: grid;
 
     grid-template-columns:
@@ -252,11 +187,9 @@ body {
     gap: 15px;
 
     width: 100%;
-
     max-width: 800px;
 
     margin: auto;
-
 }
 
 
@@ -265,7 +198,6 @@ body {
 ===================================================== */
 
 .brother-button {
-
     position: relative;
 
     min-height: 110px;
@@ -273,17 +205,16 @@ body {
     padding: 25px 15px;
 
     border:
-        1px solid rgba(244,
-            202,
-            112,
-            0.35);
+        1px solid rgba(244, 202, 112, 0.35);
 
     border-radius: 20px;
 
     background:
-        linear-gradient(145deg,
+        linear-gradient(
+            145deg,
             rgba(115, 24, 48, 0.75),
-            rgba(35, 7, 17, 0.9));
+            rgba(35, 7, 17, 0.9)
+        );
 
     color: #f7dfad;
 
@@ -298,11 +229,10 @@ body {
         border-color 0.25s ease,
         box-shadow 0.25s ease;
 
+    -webkit-tap-highlight-color: transparent;
 }
 
-
 .brother-button span {
-
     display: block;
 
     margin-bottom: 10px;
@@ -314,52 +244,31 @@ body {
     font-size: 9px;
 
     letter-spacing: 3px;
-
 }
 
-
 .brother-button b {
-
     position: absolute;
 
     top: 12px;
-
     right: 15px;
 
     color: #ff927d;
 
     font-size: 18px;
-
 }
-
 
 .brother-button:hover {
+    transform: translateY(-6px);
 
-    transform:
-        translateY(-6px);
-
-    border-color:
-        #f4ca70;
+    border-color: #f4ca70;
 
     box-shadow:
-        0 15px 40px rgba(0,
-            0,
-            0,
-            0.4),
-
-        0 0 25px rgba(244,
-            202,
-            112,
-            0.12);
-
+        0 15px 40px rgba(0, 0, 0, 0.4),
+        0 0 25px rgba(244, 202, 112, 0.12);
 }
 
-
 .brother-button:active {
-
-    transform:
-        scale(0.96);
-
+    transform: scale(0.96);
 }
 
 
@@ -368,17 +277,13 @@ body {
 ===================================================== */
 
 .personal-page {
-
     position: fixed;
-
     inset: 0;
 
     z-index: 30;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     padding: 25px;
@@ -386,35 +291,28 @@ body {
     overflow-y: auto;
 
     background:
-        radial-gradient(circle at center,
+        radial-gradient(
+            circle at center,
             #581b2d 0%,
             #230811 50%,
-            #080207 100%);
+            #080207 100%
+        );
 
     opacity: 0;
-
     visibility: hidden;
 
-    transform:
-        scale(1.05);
+    transform: scale(1.05);
 
     transition:
         opacity 0.7s ease,
         transform 0.7s ease,
         visibility 0.7s;
-
 }
 
-
 .personal-page.show {
-
     opacity: 1;
-
     visibility: visible;
-
-    transform:
-        scale(1);
-
+    transform: scale(1);
 }
 
 
@@ -423,38 +321,32 @@ body {
 ===================================================== */
 
 .letter-card {
+    width: min(720px, 100%);
 
-    width: min(720px,
-            94%);
-
-    max-height: 90vh;
+    max-height: calc(100dvh - 40px);
 
     overflow-y: auto;
 
-    padding:
-        45px;
+    padding: 45px;
 
     border:
-        1px solid rgba(244,
-            202,
-            112,
-            0.4);
+        1px solid rgba(244, 202, 112, 0.4);
 
     border-radius: 28px;
 
     text-align: center;
 
     background:
-        linear-gradient(145deg,
+        linear-gradient(
+            145deg,
             rgba(105, 22, 45, 0.82),
-            rgba(25, 5, 13, 0.95));
+            rgba(25, 5, 13, 0.95)
+        );
 
     box-shadow:
-        0 30px 100px rgba(0,
-            0,
-            0,
-            0.55);
+        0 30px 100px rgba(0, 0, 0, 0.55);
 
+    -webkit-overflow-scrolling: touch;
 }
 
 
@@ -463,7 +355,6 @@ body {
 ===================================================== */
 
 .personal-label {
-
     margin: 0 0 15px;
 
     color: #f4ca70;
@@ -471,39 +362,30 @@ body {
     font-size: 10px;
 
     letter-spacing: 4px;
-
 }
 
-
 .letter-card h1 {
-
     margin: 0;
 
     color: #ffd98c;
 
     font-family: Georgia, serif;
 
-    font-size:
-        clamp(36px,
-            6vw,
-            62px);
+    font-size: clamp(36px, 6vw, 62px);
 
     font-weight: 400;
 
+    line-height: 1.15;
 }
 
-
 .rakhi-symbol {
-
-    margin:
-        18px 0 28px;
+    margin: 18px 0 28px;
 
     color: #ff9a83;
 
     font-size: 25px;
 
     letter-spacing: 10px;
-
 }
 
 
@@ -512,7 +394,6 @@ body {
 ===================================================== */
 
 .letter {
-
     max-width: 580px;
 
     margin: auto;
@@ -527,6 +408,7 @@ body {
 
     white-space: pre-line;
 
+    overflow-wrap: break-word;
 }
 
 
@@ -535,35 +417,23 @@ body {
 ===================================================== */
 
 .surprise-section {
-
     margin-top: 35px;
 
     padding-top: 25px;
 
     border-top:
-        1px solid rgba(255,
-            210,
-            130,
-            0.15);
-
+        1px solid rgba(255, 210, 130, 0.15);
 }
-
 
 .surprise-section p {
-
     color: #d7b8c0;
-
     font-size: 14px;
-
 }
 
-
 #giftButton {
-
     margin-top: 10px;
 
-    padding:
-        14px 25px;
+    padding: 14px 25px;
 
     border:
         1px solid #f4ca70;
@@ -571,10 +441,7 @@ body {
     border-radius: 50px;
 
     background:
-        rgba(244,
-            202,
-            112,
-            0.08);
+        rgba(244, 202, 112, 0.08);
 
     color: #f4ca70;
 
@@ -588,19 +455,33 @@ body {
         transform 0.25s ease,
         background 0.25s ease;
 
+    min-height: 48px;
+}
+
+#giftButton:hover {
+    transform: translateY(-3px);
+
+    background:
+        rgba(244, 202, 112, 0.16);
 }
 
 
-#giftButton:hover {
+/* =====================================================
+   TABLET
+===================================================== */
 
-    transform:
-        translateY(-3px);
+@media (max-width: 800px) {
 
-    background:
-        rgba(244,
-            202,
-            112,
-            0.16);
+    .brothers-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        max-width: 600px;
+    }
+
+    .selection-box {
+        padding-top: 20px;
+    }
 
 }
 
@@ -611,84 +492,247 @@ body {
 
 @media (max-width: 600px) {
 
+    body {
+        overflow-x: hidden;
+    }
+
+
+    /* HOME */
+
+    .home-page {
+        height: 100dvh;
+    }
 
     .rakhi-background {
-
         background-size: cover;
 
         background-position:
             center center;
-
     }
-
 
     .open-button {
-
-        width: 240px;
-
-        height: 60px;
-
         top: 74%;
 
+        width: 75vw;
+        max-width: 280px;
+
+        height: 65px;
     }
 
 
-    .brothers-grid {
+    /* BROTHER SELECTION */
 
+    .brothers-page {
+        align-items: flex-start;
+
+        padding:
+            35px 15px 45px;
+    }
+
+    .selection-box {
+        width: 100%;
+
+        padding:
+            15px 5px 40px;
+    }
+
+    .small-title {
+        font-size: 9px;
+
+        letter-spacing: 3px;
+
+        margin-bottom: 12px;
+    }
+
+    .selection-box h1 {
+        font-size:
+            clamp(36px, 11vw, 48px);
+
+        line-height: 1.05;
+    }
+
+    .selection-text {
+        margin:
+            18px 0 28px;
+
+        font-size: 13px;
+
+        line-height: 1.6;
+    }
+
+    .selection-text br {
+        display: none;
+    }
+
+
+    /* BROTHER GRID */
+
+    .brothers-grid {
         grid-template-columns:
             repeat(2, 1fr);
 
         gap: 10px;
 
+        width: 100%;
     }
 
 
+    /* BROTHER BUTTON */
+
     .brother-button {
+        min-height: 92px;
 
-        min-height: 95px;
+        padding:
+            20px 8px;
 
-        padding: 20px 8px;
+        border-radius: 17px;
 
         font-size: 17px;
 
+        min-width: 0;
+    }
+
+    .brother-button span {
+        margin-bottom: 7px;
+
+        font-size: 8px;
+
+        letter-spacing: 2px;
+    }
+
+    .brother-button b {
+        top: 9px;
+        right: 10px;
+
+        font-size: 15px;
+    }
+
+    .brother-button:hover {
+        transform: none;
     }
 
 
-    .selection-box h1 {
+    /* LETTER */
 
-        font-size: 42px;
-
-    }
-
-
-    .selection-text {
-
-        font-size: 14px;
-
-    }
-
-
-    .letter-card {
+    .personal-page {
+        align-items: flex-start;
 
         padding:
-            35px 22px 40px;
-
+            20px 12px;
     }
 
+    .letter-card {
+        width: 100%;
 
-    .letter {
+        max-height:
+            calc(100dvh - 40px);
 
-        font-size: 16px;
+        padding:
+            30px 20px 35px;
 
-        line-height: 1.8;
-
+        border-radius: 22px;
     }
 
+    .personal-label {
+        font-size: 9px;
+
+        letter-spacing: 3px;
+    }
 
     .letter-card h1 {
+        font-size:
+            clamp(30px, 9vw, 40px);
 
-        font-size: 38px;
+        line-height: 1.15;
+    }
 
+    .rakhi-symbol {
+        margin:
+            15px 0 20px;
+
+        font-size: 22px;
+
+        letter-spacing: 6px;
+    }
+
+    .letter {
+        font-size: 16px;
+
+        line-height: 1.75;
+
+        text-align: left;
+    }
+
+    .surprise-section {
+        margin-top: 25px;
+
+        padding-top: 20px;
+    }
+
+    .surprise-section p {
+        font-size: 13px;
+    }
+
+    #giftButton {
+        width: 100%;
+
+        padding:
+            14px 18px;
+
+        min-height: 50px;
+    }
+
+}
+
+
+/* =====================================================
+   VERY SMALL PHONES
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .brothers-page {
+        padding:
+            25px 10px 35px;
+    }
+
+    .selection-box h1 {
+        font-size: 34px;
+    }
+
+    .selection-text {
+        font-size: 12px;
+    }
+
+    .brothers-grid {
+        gap: 8px;
+    }
+
+    .brother-button {
+        min-height: 85px;
+
+        font-size: 15px;
+
+        padding:
+            17px 5px;
+    }
+
+    .brother-button b {
+        display: none;
+    }
+
+    .letter-card {
+        padding:
+            25px 17px 30px;
+    }
+
+    .letter-card h1 {
+        font-size: 28px;
+    }
+
+    .letter {
+        font-size: 15px;
+        line-height: 1.7;
     }
 
 }
