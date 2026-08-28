@@ -2,40 +2,56 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>One Last Surprise ❤️</title>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
 
         body {
+
             margin: 0;
+
             min-height: 100vh;
+
             display: flex;
+
             justify-content: center;
+
             align-items: center;
+
             padding: 25px;
 
             background:
-                radial-gradient(circle at top,
+                radial-gradient(
+                    circle at top,
                     #64152f,
-                    #100207 75%);
+                    #100207 75%
+                );
 
             font-family: Georgia, serif;
+
             color: #ffe9c0;
+
         }
 
         .card {
+
             width: min(600px, 95%);
+
             padding: 45px 30px;
 
             text-align: center;
 
-            background: rgba(35, 6, 18, 0.97);
+            background:
+                rgba(35, 6, 18, 0.97);
 
             border:
                 1px solid rgba(255, 215, 140, 0.65);
@@ -43,20 +59,32 @@
             border-radius: 30px;
 
             box-shadow:
-                0 25px 80px rgba(0, 0, 0, 0.7);
+                0 25px 80px rgba(0, 0, 0, 0.7),
 
-            animation: appear 0.8s ease;
+                0 0 50px
+                rgba(255, 190, 90, 0.12);
+
+            animation:
+                appear 0.8s ease;
+
         }
 
         .small {
+
             font-family: Arial, sans-serif;
+
             font-size: 11px;
+
             letter-spacing: 4px;
+
             color: #d9a94f;
+
             margin-bottom: 18px;
+
         }
 
         h1 {
+
             margin: 0;
 
             color: #ffd98f;
@@ -64,9 +92,22 @@
             font-size: 38px;
 
             font-weight: normal;
+
+        }
+
+        .emoji {
+
+            font-size: 55px;
+
+            margin: 20px 0;
+
+            animation:
+                float 2s ease-in-out infinite;
+
         }
 
         .message {
+
             margin: 25px auto;
 
             max-width: 480px;
@@ -76,33 +117,59 @@
             font-size: 18px;
 
             line-height: 1.8;
-        }
 
-        .emoji {
-            font-size: 55px;
-            margin: 20px 0;
         }
 
         .tax {
+
             color: #ffd98f;
+
             font-size: 24px;
-            margin: 20px 0 10px;
+
+            margin: 25px 0 10px;
+
         }
 
         .sub {
+
             color: #d9c0c7;
+
             font-family: Arial, sans-serif;
+
             font-size: 14px;
+
         }
 
+        /* QR TITLE */
+
+        .qr-title {
+
+            margin-top: 25px;
+
+            color: #ffe4a1;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 14px;
+
+            letter-spacing: 1px;
+
+        }
+
+        /* QR BOX */
+
         .qr-box {
+
             width: 240px;
+
             height: 240px;
 
-            margin: 25px auto;
+            margin: 20px auto;
 
             display: flex;
+
             justify-content: center;
+
             align-items: center;
 
             background: white;
@@ -112,23 +179,39 @@
             padding: 15px;
 
             box-shadow:
-                0 10px 35px rgba(0, 0, 0, 0.4);
+                0 10px 35px
+                rgba(0, 0, 0, 0.4);
+
         }
 
         .qr-box img {
+
             width: 100%;
+
             height: 100%;
+
             object-fit: contain;
+
         }
 
         .note {
+
             color: #cfaeb7;
+
             font-family: Arial, sans-serif;
+
             font-size: 13px;
+
             margin-top: 20px;
+
+            line-height: 1.6;
+
         }
 
+        /* BUTTON */
+
         .again {
+
             display: inline-block;
 
             margin-top: 25px;
@@ -141,9 +224,11 @@
             border-radius: 50px;
 
             background:
-                linear-gradient(135deg,
+                linear-gradient(
+                    135deg,
                     #851d3a,
-                    #481020);
+                    #481020
+                );
 
             color: #ffe4a1;
 
@@ -152,39 +237,110 @@
             font-family: Arial, sans-serif;
 
             font-weight: bold;
+
+            transition:
+                transform 0.2s ease,
+
+                box-shadow 0.2s ease;
+
         }
+
+        .again:hover {
+
+            transform: scale(1.05);
+
+            box-shadow:
+                0 8px 25px
+                rgba(232, 189, 101, 0.2);
+
+        }
+
+        /* ANIMATIONS */
 
         @keyframes appear {
 
             from {
+
                 opacity: 0;
+
                 transform:
-                    translateY(30px) scale(0.96);
+                    translateY(30px)
+                    scale(0.96);
+
             }
 
             to {
+
                 opacity: 1;
+
                 transform:
-                    translateY(0) scale(1);
+                    translateY(0)
+                    scale(1);
+
             }
+
         }
+
+        @keyframes float {
+
+            0%,
+            100% {
+
+                transform:
+                    translateY(0);
+
+            }
+
+            50% {
+
+                transform:
+                    translateY(-8px);
+
+            }
+
+        }
+
+        /* MOBILE */
 
         @media (max-width: 500px) {
 
             h1 {
+
                 font-size: 30px;
+
             }
 
             .card {
-                padding: 35px 20px;
+
+                padding:
+                    35px 20px;
+
+            }
+
+            .message {
+
+                font-size: 16px;
+
             }
 
             .qr-box {
+
                 width: 210px;
+
                 height: 210px;
+
             }
+
+            .tax {
+
+                font-size: 21px;
+
+            }
+
         }
+
     </style>
+
 </head>
 
 <body>
@@ -192,52 +348,91 @@
     <div class="card">
 
         <div class="small">
+
             WAIT... ONE LAST THING 👀
+
         </div>
 
         <h1>
+
             Don't Leave Yet ❤️
+
         </h1>
 
         <div class="emoji">
+
             🎀
+
         </div>
 
         <div class="message">
-            You've received your Rakhi.<br>
-            You've received your letter. 💌
+
+            You've received your Rakhi. 🎀
+
             <br><br>
 
-            But there's <strong>one tiny thing</strong> left...
+            But there's
+            <strong>one tiny thing</strong>
+            left...
+
         </div>
 
         <div class="tax">
+
             THE SISTER TAX 😂❤️
+
         </div>
 
         <div class="sub">
+
             Because being the favourite sister isn't free. 😌
+
+        </div>
+
+        <div class="qr-title">
+
+            SCAN THIS FOR YOUR FINAL SURPRISE 📱
+
         </div>
 
         <div class="qr-box">
 
             <!--
-                TEMPORARY QR IMAGE
+                IMPORTANT:
 
-                Later replace this image with
-                your own QR image.
+                Keep your QR image in the SAME folder
+                as this gift.html file.
+
+                The image should be named:
+
+                qr-placeholder.jpeg
             -->
 
-            <img src="qr-placeholder.jpeg" alt="QR Code">
+            <img
+                src="qr-placeholder.jpeg"
+                alt="Sister Tax QR Code"
+            >
 
         </div>
 
         <div class="note">
-            A tiny contribution to the Sister Happiness Fund. 😂
+
+            A tiny contribution to the
+            Sister Happiness Fund. 😂❤️
+
+            <br>
+
+            No refunds. Obviously. 😌
+
         </div>
 
-        <a class="again" href="index.html">
+        <a
+            class="again"
+            href="index.html"
+        >
+
             🎀 EXPERIENCE AGAIN
+
         </a>
 
     </div>
